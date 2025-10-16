@@ -16,6 +16,7 @@ namespace Prog5_3C2025.Controllers
         public IActionResult Index()
         {
             var estudiante = new Estudiante(1, "Juan Pérez", 95);
+            TempData["Exito"] = "Bienvenido!";
             return View(estudiante);
         }
 
