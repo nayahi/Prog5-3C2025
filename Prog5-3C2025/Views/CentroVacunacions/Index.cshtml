@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Prog5_3C2025.Models.CentroVacunacion>
+
+@* @{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProvinciaId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProvinciaId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@model IEnumerable<CentroVacunacion2>
+@{
+    ViewData["Title"] = "Index";
+} *@
+
+@*<partial name="_Notificacion" />*@
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Lista de Centros de vacunación</h2>
+        </div>
+
+        <div class="col-6 text-end">
+            <a asp-controller="CentroVacunacions" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> &nbsp Crear nuevo centro vacunación
+            </a>
+        </div>
+    </div>
+    <br /> <br />
+    <table class="table table-bordered table-striped style=width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Centro de Vacunación
+                </th>
+                <th>
+                    ProvinciaID
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var cv in Model)
+            {
+                <tr>
+                    <td width="50%">
+                        @cv.Descripcion
+                    </td>
+                    <td width="20%">
+                        @cv.ProvinciaId
+                    </td>
+                    <th>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="CentroVacunacions" asp-action="Details" asp-route-id="@cv.Id" class="btn btn-danger mx-2"><i class="bi bi-journal-check"></i>Detalles</a>
+                            <a asp-controller="CentroVacunacions" asp-action="Edit" asp-route-id="@cv.Id" class="btn btn-primary mx-2"><i class="bi bi-pen-fill"></i>Editar</a>
+                            <a asp-controller="CentroVacunacions" asp-action="Delete" asp-route-id="@cv.Id" class="btn btn-danger mx-2"><i class="bi bi-trash-fill"></i>Borrar</a>
+                        </div>
+                    </th>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
